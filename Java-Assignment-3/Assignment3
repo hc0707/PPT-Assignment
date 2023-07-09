@@ -1,0 +1,286 @@
+💡Q1.Write a simple Banking System program by using OOPs concept where you can get account Holder name balance etc?
+
+class Bank {
+
+	// Initial balance $100
+	int total = 100;
+
+	void withdrawn(String name, int withdrawal) {
+		if (total >= withdrawal) {
+			System.out.println(name + " withdrawn " + withdrawal);
+
+			total = total - withdrawal;
+			System.out.println("Balance after withdrawal: " + total);
+		}
+
+		else {
+			System.out.println(name + " you can not withdraw " + withdrawal);
+
+			System.out.println("your balance is: " + total);
+		}
+	}
+
+	void deposit(String name, int deposit) {
+		System.out.println(name + " deposited " + deposit);
+		total = total + deposit;
+		System.out.println("Balance after deposit: " + total);
+		// Making the thread sleep for 1 second after
+		// each deposit
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+public class MyBank {
+
+	// Main driver method
+	public static void main(String[] args) {
+		Bank obj = new Bank();
+		obj.withdrawn("Arnab", 20);
+		obj.withdrawn("Monodwip", 40);
+		obj.deposit("Mukta", 35);
+		obj.withdrawn("Rinkel", 80);
+		obj.withdrawn("Shubham", 40);
+	}
+}
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q2. Write a Program where you inherit method from parent class and show method Overridden Concept?
+
+class ParentClass {
+    public void sayHello() {
+        System.out.println("Hello from ParentClass!");
+    }
+
+    public void sayGoodbye() {
+        System.out.println("Goodbye from ParentClass!");
+    }
+}
+
+class ChildClass extends ParentClass {
+    @Override
+    public void sayHello() {
+        System.out.println("Hello from ChildClass!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ParentClass parent = new ParentClass();
+        ChildClass child = new ChildClass();
+
+        parent.sayHello();      // Output: Hello from ParentClass!
+        parent.sayGoodbye();    // Output: Goodbye from ParentClass!
+
+        child.sayHello();       // Output: Hello from ChildClass!
+        child.sayGoodbye();     // Output: Goodbye from ParentClass! (inherited method)
+    }
+}
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q3.Write a program to show run time polymorphism in java?
+
+class Animal {
+    public void makeSound() {
+        System.out.println("Animal is making a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Dog is barking");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Cat is meowing");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal1 = new Animal();
+        Animal animal2 = new Dog();
+        Animal animal3 = new Cat();
+
+        animal1.makeSound();  // Output: Animal is making a sound
+        animal2.makeSound();  // Output: Dog is barking
+        animal3.makeSound();  // Output: Cat is meowing
+    }
+}
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q4.Write a program to show Compile time polymorphism in java?
+
+class MathUtils {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MathUtils math = new MathUtils();
+
+        int result1 = math.add(5, 10);                       // Calls the add(int a, int b) method
+        double result2 = math.add(2.5, 3.5);                 // Calls the add(double a, double b) method
+
+        System.out.println("Result 1: " + result1);          // Output: Result 1: 15
+        System.out.println("Result 2: " + result2);          // Output: Result 2: 6.0
+   }
+}
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q5. Achieve loose coupling in java by using OOPs  concept?
+
+// Interface representing the PaymentGateway
+interface PaymentGateway {
+    void processPayment(double amount);
+}
+
+// Concrete implementation of the PaymentGateway interface
+class PayPal implements PaymentGateway {
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Processing payment of $" + amount + " using PayPal");
+        // Perform PayPal specific payment processing logic
+    }
+}
+
+// Concrete implementation of the PaymentGateway interface
+class Stripe implements PaymentGateway {
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Processing payment of $" + amount + " using Stripe");
+        // Perform Stripe specific payment processing logic
+    }
+}
+
+// Class that utilizes the PaymentGateway for processing payments
+class PaymentProcessor {
+    private PaymentGateway paymentGateway;
+
+    public PaymentProcessor(PaymentGateway paymentGateway) {
+        this.paymentGateway = paymentGateway;
+    }
+
+    public void processPayment(double amount) {
+        paymentGateway.processPayment(amount);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Creating instances of PaymentGateway
+        PaymentGateway paypalGateway = new PayPal();
+        PaymentGateway stripeGateway = new Stripe();
+
+        // Creating instance of PaymentProcessor with PayPal gateway
+        PaymentProcessor paypalProcessor = new PaymentProcessor(paypalGateway);
+        paypalProcessor.processPayment(100.50);
+
+        // Creating instance of PaymentProcessor with Stripe gateway
+        PaymentProcessor stripeProcessor = new PaymentProcessor(stripeGateway);
+        stripeProcessor.processPayment(75.25);
+    }
+}
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q6. What is the benefit of encapsulation in java?
+
+Encapsulation in Java enhances code quality, improves code maintainability,promotes data hiding and reduces the risk of data corruption or unintended 
+modifications. It 
+allows for better code organization, promotes reusability, and facilitates effective collaboration among developers working on different parts of a 
+project.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q7.Is java a t 100% Object oriented Programming language? If no why ?
+
+Java is not strictly a 100% object-oriented programming language because of:
+
+1-Primitive Data Types: Java includes primitive data types such as int, boolean, double, etc., which are not objects and do not inherit from a common class. These types 
+are not treated as objects and have special handling in the language.
+
+2-Static Methods and Variables: Java allows the use of static methods and variables, which are associated with the class itself rather than specific instances of the 
+class. These elements are not tied to objects and can be accessed without creating an instance of the class.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q8.What are the advantages of abstraction in java?
+
+Abstraction helps to simplify the complexity of a system by focusing on the essential features and hiding unnecessary details.abstraction in Java helps in 
+managing complexity, promoting code reuseability, encapsulating implementation details, providing flexibility and extensibility, and enhancing code 
+maintainability and modifiability. It is a powerful tool for designing robust and scalable software systems.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q9.What is an abstraction explained with an Example?
+
+In Java, abstraction is a fundamental concept of object-oriented programming (OOP) that allows you to create abstract classes and interfaces to define 
+common behaviors and characteristics of objects. Abstraction focuses on what an object does rather than how it does it, hiding the implementation details 
+and providing a high-level view of the functionality.
+
+abstract class Shape {
+    
+    public abstract double calculateArea();
+ 
+    public void display() {
+        System.out.println("This is a shape.");
+    }
+}
+
+class Rectangle extends Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public double calculateArea() {
+        return length * width;
+    }
+}
+
+class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Shape rectangle = new Rectangle(5, 3);
+        System.out.println("Rectangle Area: " + rectangle.calculateArea());  // Output: Rectangle Area: 15.0
+        rectangle.display();  // Output: This is a shape.
+
+        Shape circle = new Circle(2.5);
+        System.out.println("Circle Area: " + circle.calculateArea());  // Output: Circle Area: 19.6349
+        circle.display();  // Output: This is a shape.
+    }
+}
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q10.What is the final class in Java?
+
+In Java, the final keyword can be applied to classes, methods, and variables. When applied to a class, it makes the class "final," meaning it cannot be extended or subclassed by other classes. A final class is a class that cannot be inherited.
+__________________________________________________________________________________________________________________________________________________________
