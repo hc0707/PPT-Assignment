@@ -1,0 +1,127 @@
+💡 Q1.Write a program to show Interface Example in java?
+
+interface Shape {
+    double calculateArea();
+}
+
+class Rectangle implements Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public double calculateArea() {
+        return length * width;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape rectangle = new Rectangle(5, 3);
+        System.out.println("Rectangle Area: " + rectangle.calculateArea());        // Output: Rectangle Area: 15.0
+    }
+}
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q2.Write a program with 2 concrete method and 2 abstract method in java?
+
+abstract class AbstractClass {
+    // Abstract methods
+    public abstract void abstractMethod1();
+    public abstract void abstractMethod2();
+
+    // Concrete methods
+    public void concreteMethod1() {
+        System.out.println("Concrete Method 1");
+    }
+    public void concreteMethod2() {
+        System.out.println("Concrete Method 2");
+    }
+}
+
+class ConcreteClass extends AbstractClass {
+    @Override
+    public void abstractMethod1() {
+        System.out.println("Abstract Method 1 implementation in ConcreteClass");
+    }
+
+    @Override
+    public void abstractMethod2() {
+        System.out.println("Abstract Method 2 implementation in ConcreteClass");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ConcreteClass concreteObj = new ConcreteClass();
+        concreteObj.abstractMethod1();      // Output: Abstract Method 1 implementation in ConcreteClass
+        concreteObj.abstractMethod2();      // Output: Abstract Method 2 implementation in ConcreteClass
+        concreteObj.concreteMethod1();      // Output: Concrete Method 1
+        concreteObj.concreteMethod2();      // Output: Concrete Method 2
+    }
+}
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q3.Write a program  to show the use of functional interface in java?
+
+@FunctionalInterface
+interface Calculator {
+    int calculate(int a, int b);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator addition = (a, b) -> a + b;
+        System.out.println("Addition: " + addition.calculate(5, 3));    // Output: Addition: 8
+        Calculator subtraction = (a, b) -> a - b;
+        System.out.println("Subtraction: " + subtraction.calculate(5, 3));    // Output: Subtraction: 2
+    }
+}
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q4.What is an interface in Java?
+
+In Java, an interface is a reference type that defines a contract or a set of methods that a class must implement. It specifies the methods that a class 
+should have without providing the implementation details. In essence, an interface defines the behavior or capabilities that a class should possess.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q5.What is the use of interface in Java?
+
+In Java, an interface is a reference type that defines a contract or a set of methods that a class must implement. It specifies the methods that a class 
+should have without providing the implementation details. In essence, an interface defines the behavior or capabilities that a class should possess.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q6.What is the lambda expression of Java 8?
+
+A lambda expression in Java 8 is a concise way to represent an anonymous function. It provides a way to pass functionality as a method argument or to 
+define simple inline implementations of functional interfaces.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q7.Can you pass lambda expressions to a method? When?
+
+Lambda expressions are commonly used when working with functional interfaces, which have a single abstract method. The lambda expression can be used to 
+implement the abstract method of the functional interface, and then passed as an argument to a method that expects that particular functional interface as 
+a parameter.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q8.What is the functional interface in Java 8?
+
+In Java 8, a functional interface is an interface that specifies exactly one abstract method. It is also known as a Single Abstract Method (SAM) interface 
+or a functional interface because it can be used as a target for a lambda expression or a method reference.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q9.What is the benefit of lambda expressions in Java 8?
+
+lambda expressions provide a powerful and expressive way to write code in a functional style, enhancing code readability, maintainability, and 
+performance. They enable the use of functional programming paradigms and facilitate the development of more concise and efficient Java programs.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q10.Is it mandatory for a lambda expression to have parameters?
+
+No it is not mandatory for a lambda expression to have parameters in case when the abstract method of the functional interface does not accept any 
+argument as parameter. 
+__________________________________________________________________________________________________________________________________________________________
