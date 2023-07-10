@@ -1,0 +1,119 @@
+💡Q1.What is Exception in Java?
+
+In Java, an exception is an event that occurs during the execution of a program that disrupts the normal flow of instructions. It is a mechanism provided by 
+the Java programming language to handle runtime errors, abnormal conditions, and exceptional situations that may occur during program execution.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q2.What is Exception Handling?
+
+Exception handling in Java is a mechanism provided by the language to handle exceptions that occur during the execution of a program. It allows developers 
+to catch, handle, and recover from exceptions gracefully, rather than abruptly terminating the program.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q3.What is the difference between Checked and Unchecked Exceptions and Error?
+
+The main difference between checked and unchecked exceptions lies in how they are handled. Checked exceptions must be caught or declared, either by 
+handling 
+them with a try-catch block or declaring them in the method signature. Unchecked exceptions, on the other hand, are not required to be caught or declared 
+explicitly.
+Errors, unlike exceptions, are not meant to be caught or handled by the application code. They indicate severe problems that often result in abnormal 
+termination of the program.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q4.What are the difference between throw and throws in Java?
+
+In Java, both throw and throws are used in the context of exception handling, but they serve different purposes. Throw is used to manually throw an 
+exception, while throws is used in a method declaration to indicate that the method may throw one or more exceptions, allowing the calling code to handle 
+them.
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q5.What is multithreading in Java? mention its advantages
+
+Multithreading in Java refers to the concurrent execution of multiple threads within a single program.
+Advantages of multithreading in Java include:
+1. Increased responsiveness and performance
+2. Better resource utilization: 
+3. Responsiveness to user interaction: 
+4. Concurrent execution of independent tasks:
+5. Effective utilization of multiprocessor systems: 
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q6.Write a program to create and call a custom exception
+
+// Custom exception class
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message);
+    }
+}
+
+class CustomExceptionExample {
+    public static void main(String[] args) {
+        try {
+            throw new CustomException("Custom exception occurred!");
+        } 
+        } catch (CustomException e) {
+            System.out.println("Custom exception caught: " + e.getMessage());
+        }
+    }
+}
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q7.How can you handle exceptions in Java? 
+
+In Java, exceptions can be handled using the try-catch block and the `throws` clause.
+1. Try-Catch Block:
+   The try-catch block is used to handle exceptions that may occur within a specific block of code. The structure of a try-catch block is as follows:
+   try {
+       // Code that may throw an exception
+   } catch (ExceptionType exception) {
+       // Exception handling code for ExceptionType
+   } finally {
+       // Optional: Code that will always execute, regardless of whether an exception occurred or not
+   }
+
+2. Throws Clause:
+   The `throws` clause is used in a method declaration to indicate that the method may throw one or more exceptions. The structure of the `throws` clause 
+   is as follows:
+   returnType methodName(parameters) throws ExceptionType1, ExceptionType2 {
+       // Method body that may throw exceptions
+   }
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q8.What is Thread in Java?
+
+In Java, a thread is a lightweight unit of execution that represents a separate flow of control within a program. It allows concurrent execution of 
+multiple tasks within a single program. 
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q9. What are the two ways of implementing thread in Java?
+
+In Java, there are two ways to implement threads:
+
+1. Extending the Thread Class:
+   class MyThread extends Thread {
+       public void run() {
+           // Code to be executed in the thread
+       }
+   }
+
+   MyThread thread = new MyThread();
+   thread.start();
+  
+2. Implementing the Runnable Interface:
+   class MyRunnable implements Runnable {
+       public void run() {
+           // Code to be executed in the thread
+       }
+   }
+
+   Thread thread = new Thread(new MyRunnable());
+   thread.start();
+__________________________________________________________________________________________________________________________________________________________
+
+💡Q10.What do you mean by garbage collection?
+
+Garbage collection is an automatic memory management feature in programming languages like Java. It is the process of automatically reclaiming memory 
+occupied by objects that are no longer needed or referenced by the program. The garbage collector identifies and frees up memory that is no longer in use, 
+allowing it to be reallocated for other purposes.
+__________________________________________________________________________________________________________________________________________________________
